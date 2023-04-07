@@ -9,6 +9,6 @@ class clgragistration extends Model
 {
     use HasFactory;
     protected $fillable = ['firstname', 'lastname','mothername','fathername','address','gender','state','city','dob','pincode','course','email'];
-    protected $table = 'adminlogin';
+    protected $table = 'clgragistration';
 
 }
