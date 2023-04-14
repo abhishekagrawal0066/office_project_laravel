@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserLogin;
 use App\Http\Controllers\collageRagistrations;
 use App\Http\Controllers\CollageAdminLogin;
+use App\Http\Controllers\category;
 
 // use App\Http\Controllers\CollageForm;
 
@@ -43,12 +44,22 @@ Route::post('/collage/store',[collageRagistrations::class, 'store'])->name('coll
 // Route::get('/collage/admin',function (){
 //     return view('login');
 // });
-Route::get('/collage/admin',[CollageAdminLogin::class, 'index'])->name('login');
-Route::post('/collage/admin/store',[CollageAdminLogin::class, 'store'])->name('collage.admin.login');
-// Route::post('/collage/admin/store',[CollageAdminLogin::class, 'store'])->name('collage.admin.login');
-Route::get('/collage/admin/dashboard', [CollageAdminLogin::class, 'dashboard']); 
+// Route::middleware(['Authenticate'])->group(function () {
 
-Route::get('/collage/admin/logout', [CollageAdminLogin::class, 'logout'])->name('logout');
+    Route::get('/collage/admin',[CollageAdminLogin::class, 'index'])->name('login');
+    Route::post('/collage/admin/store',[CollageAdminLogin::class, 'store'])->name('collage.admin.login');
+    // Route::post('/collage/admin/store',[CollageAdminLogin::class, 'store'])->name('collage.admin.login');
+    Route::get('/collage/admin/dashboard', [CollageAdminLogin::class, 'dashboard']); 
+
+    Route::get('/collage/admin/logout', [CollageAdminLogin::class, 'logout'])->name('logout');
+
+    //category
+    Route::get('/collage/admin/category/list',[category::class, 'index'])->name('category.list');
+    Route::get('/collage/admin/category/add',[category::class, 'create'])->name('category.add');
+    Route::post('/collage/admin/category/add',[category::class, 'store'])->name('category.create');
+
+
+// });
 
 // Route::get('/registration',function (){
 //     return view('collage/registration');

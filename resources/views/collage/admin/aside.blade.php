@@ -58,7 +58,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="dashboard" class="menu-link">
+            <a href="{{ url('collage/admin/dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -110,7 +110,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="category.list" class="menu-link">
+                    <a href="{{ route('category.list') }}" class="menu-link">
                         <div data-i18n="Account">Category List</div>
                     </a>
                 </li>
