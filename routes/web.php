@@ -57,6 +57,9 @@ Route::post('/collage/store',[collageRagistrations::class, 'store'])->name('coll
     Route::get('/collage/admin/category/list',[category::class, 'index'])->name('category.list');
     Route::get('/collage/admin/category/add',[category::class, 'create'])->name('category.add');
     Route::post('/collage/admin/category/add',[category::class, 'store'])->name('category.create');
+    Route::get('collage/admin/category/list/{id}', [category::class, 'destroy'])->name('category.destroy');
+    Route::get('collage/admin/category/add/{id}',[ category::class, 'update'])->name('updated');
+    Route::get('collage/admin/category/update/{id}', [category::class, 'edit'])->name('updates');
 
 
 // });

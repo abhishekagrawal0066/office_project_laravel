@@ -23,7 +23,8 @@ class category extends Controller
      */
     public function create()
     {
-        return view('collage/admin/category/add');
+        return view('collage/admin/category/add')->with('updates', new categorys());;;
+        // return view('createUser')->with('updates', new Student());;
     }
 
     /**
@@ -49,9 +50,11 @@ class category extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(categorys  $id)
     {
-        //
+        $category = categorys::find($id);
+        return view('collage/admin/category/add')->with('updates', $category);
+
     }
 
     /**
@@ -67,6 +70,9 @@ class category extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        categorys::find($id)->delete($id);
+        return response()->json([
+            'success' => 'Record deleted successfully!'
+        ]);
     }
 }

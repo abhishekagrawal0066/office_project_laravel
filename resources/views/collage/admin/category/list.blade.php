@@ -9,7 +9,7 @@
             <a href="{{ url('collage/admin/category/add') }}" class="add_category btn btn-primary float-end">Add</a>
         </div>
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table" id="example">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -35,9 +35,9 @@
                                       <i class="bx bx-dots-vertical-rounded"></i>
                                   </button>
                                   <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                      <a class="dropdown-item" href="{{route('updated',$row->id)}}"><i class="bx bx-edit-alt me-1"></i>
                                           Edit</a>
-                                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                      <a class="dropdown-item deleteRecord" data-toggle="modal" data-confirm="Confirm delete?" id="smallButton" data-target="#smallModal" data-attr="{{route('category.destroy',$row->id)}}" title="Delete Category Record"><i class="bx bx-trash me-1"></i>
                                           Delete</a>
                                   </div>
                               </div>
@@ -48,4 +48,26 @@
             </table>
         </div>
     </div>
+    <script>
+       $(document).on('click', '#smallButton', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            if(confirm("Are you sure delete this category") == true){
+                $.ajax({
+                    url :href,
+                    type : 'get',
+                    success: function(result) {
+                        
+                    }
+                })
+            }
+            
+            // event.preventDefault();
+            // let href = $(this).attr('data-attr');
+            // $("#example").dataTables().ajax.reload();
+            // $('#example').dataTable().reload();
+            // $('#example').DataTable().ajax.reload();
+            // $('#example').DataTable().ajax.reload(originalJsonData,true)
+        });
+    </script>
 @endsection

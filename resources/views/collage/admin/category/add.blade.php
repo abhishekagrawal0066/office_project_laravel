@@ -17,7 +17,7 @@
                                 @endif
                                 <label for="defaultFormControlInput" class="form-label">Category Name</label>
                                 <input type="text" name="name" class="form-control" id="defaultFormControlInput"
-                                    placeholder="John Doe" aria-describedby="defaultFormControlHelp" />
+                                    placeholder="John Doe" aria-describedby="defaultFormControlHelp" value="{{old('name', $updates->name)}}"/>
                                 <div id="defaultFormControlHelp" class="form-text">
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
